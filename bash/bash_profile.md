@@ -22,12 +22,10 @@ customizing the `$PATH` variable.
 
 Adds the following components to the `PATH` (in order):
 - User binaries
-- Emacs-related binaries
 
 ```bash
 path_overrides=(
     "$HOME/.local/bin"
-    "$HOME/.emacs.d/bin"
 )
 
 # Prepend the path overrides, colon-separated
