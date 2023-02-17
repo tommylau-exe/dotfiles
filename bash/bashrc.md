@@ -11,6 +11,13 @@ login shell.
 
 Thus, it should contain aliases, functions, custom prompts, etc.
 
+## Basics
+
+```bash
+# Source system config, if it exists
+[ -f /etc/bashrc ] && . /etc/bashrc
+```
+
 ```bash
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
