@@ -11,55 +11,48 @@
 
 # Files
 
-- bash
-  - [bash_profile](/bash/bash_profile.md)
-  - [bashrc](/bash/bashrc.md)
+- zsh
+  - [zshrc](/zsh/dot.zshrc)
+  - [zshenv](/zsh/dot.zshenv)
 - nvim
-  - [init.lua](/nvim/init.lua.md)
+  - [config](/nvim/lua/tom)
+  - [plugins](/nvim/lua/plugins)
 
 # Organization
 
-My dotfiles are separated by program and are all formatted as [literate
-programming][1]-style markdown files, inspired by Emacs' [org-mode][2]. The
-format is of my own invention, and my custom installation script implements it.
-Each file corresponds to one generated config file. See [Format](#format) for
-details.
+My dotfiles are split up into different folders by application. For example,
+all the Neovim dotfiles are in the nvim folder. This is in contrast to some
+dotfile repositories which attempt to do some fancy trickery with bare
+repositories in the home directory. I prefer a more straightforward approach.
 
-## Format
+As a result, all the dotfiles have to be symlinked upon install. Each
+application folder has a TARGET file which contains the path that app's
+dotfiles should be linked to. TARGET file paths support the tilde symbol (`~`),
+which is expanded to the user's `$HOME`.
 
-The file format is identical to standard Markdown with the frontmatter
-extension. The only thing I added is the frontmatter property `tangle`, which
-specifies the output file path of the generated code.
-
-Upon running `tangle.sh`, the contents of all specified files' code blocks will
-be output to their respective `tangle` property. By default, overwriting files
-is forbidden, and there is a dry-run option available to prevent accidental
-data loss.
+Additionally, dotfiles with the prefix `dot.` will be transformed to `.` upon
+linking. For example, `dot.zshrc` becomes `.zshrc`.
 
 # Installation
 
-This repo comes with it's own POSIX-compliant installation script, so setup
-should be pretty straightforward. Run `./tangle.sh -h` for more information.
+This repo comes with a small [install](/install) script written in Perl. Simply
+run `./install zsh nvim` and you should be all set.
 
 # Tom's tips and tricks
 
-## System specific configuration in bash
+## System specific configuration
 
-Both my [bashrc](/bash/bashrc.md) and [bash_profile](/bash/bash_profile.md)
-source directories for system-specific extensions (`~/.bashrc.d/` and
-`~/.bash_profile.d/` respectively). These can be used for aliases, or any other
-initialization code that may not belong in this repo.
+Both my [zshrc](/zsh/dot.zshrc) and [zshenv](/zsh/dot.zshenv) source
+directories for system-specific extensions (`~/.zshrc.d/` and `~/.zshenv.d/`
+respectively). These can be used for aliases, or any other initialization code
+that may not belong in this repo.
     
 For example, here's an example that configures `rustup`:
 
-```bash
-#!/usr/bin/env bash
+```zsh
 #
-# ~/.bash_profile.d/rustup.bash
+# ~/.zshenv.d/rustup.zsh
 #
 
 . "$HOME/.cargo/env"
 ```
-
-[1]: https://en.wikipedia.org/wiki/Literate_programming
-[2]: https://orgmode.org/
