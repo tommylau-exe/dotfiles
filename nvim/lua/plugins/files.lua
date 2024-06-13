@@ -8,7 +8,7 @@ return {
             { "<leader>ff", "<cmd>FzfLua files<cr>" },
             { "<leader>fg", "<cmd>FzfLua git_files<cr>" },
             { "<leader>ft", "<cmd>FzfLua live_grep<cr>" },
-            { "<leader>b", "<cmd>FzfLua buffers<cr>" },
+            { "<leader>fb", "<cmd>FzfLua buffers<cr>" },
         },
     },
     {

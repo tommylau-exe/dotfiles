@@ -3,9 +3,19 @@ return {
     "tpope/vim-repeat",
     {
         "tpope/vim-fugitive",
+        lazy = false,
         keys = {
-            { "<leader>g", "<cmd>Git<cr>" },
+            { "<leader>g", "<cmd>Git | only<cr>" },
         },
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+        lazy = false,
+        config = function()
+            require('gitsigns').setup({
+                current_line_blame = true,
+            })
+        end,
     },
     {
         "nvim-treesitter/nvim-treesitter",
